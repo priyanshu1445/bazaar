@@ -1,0 +1,46 @@
+import React from "react";
+import { useParams } from "react-router-dom";
+import ProductSlider from "../components/ProductSlider";
+
+const categoryData = {
+  "dairy-products": {
+    name: "Dairy Products",
+    description: "Explore more fresh dairy products here.",
+    products: [
+      { id: 1, name: "Fresh Milk", price: "₹50" },
+      { id: 2, name: "Paneer", price: "₹250" },
+      { id: 3, name: "Ghee", price: "₹600" }
+    ]
+  },
+  "fresh-fruits": {
+    name: "Fresh Fruits",
+    description: "Explore more fresh fruits here.",
+    products: [
+      { id: 4, name: "Mango", price: "₹300" },
+      { id: 5, name: "Banana", price: "₹50" }
+    ]
+  }
+};
+
+const CategoryPage = () => {
+  const { categoryId } = useParams();
+  const category = categoryData[categoryId];
+
+  if (!category) {
+    return <p className="p-6">Category not found.</p>;
+  }
+
+  return (
+    <div >
+      <div className="p-6">
+        <h1 className="text-3xl font-bold mb-2">{category.name}</h1>
+      <p className="text-gray-600 mb-6">{category.description}</p>
+      </div>
+
+  
+     <ProductSlider/>
+    </div>
+  );
+};
+
+export default CategoryPage;
