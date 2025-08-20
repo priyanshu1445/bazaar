@@ -1,10 +1,12 @@
 // src/pages/Profile.jsx
 import React, { useState } from "react";
-import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaEdit, FaCheck, FaTimes, FaInfoCircle } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaEdit, FaCheck, FaTimes, FaInfoCircle, FaHeart, FaShoppingCart, FaBox } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const Profile = () => {
+  const navigate = useNavigate();
   const [profile, setProfile] = useState({
     name: "John Doe",
     email: "john@example.com",
@@ -22,25 +24,20 @@ const Profile = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setTempProfile(prevProfile => ({
+    setTempProfile((prevProfile) => ({
       ...prevProfile,
       [name]: value,
     }));
   };
 
   const handleUpdate = () => {
-    // Simple validation
     if (!tempProfile.name || !tempProfile.email || !tempProfile.phone || !tempProfile.address) {
       toast.error("Please fill in all fields.", { position: "top-right", autoClose: 3000 });
       return;
     }
-
     setProfile(tempProfile);
     setIsEditing(false);
-    toast.success("Profile updated successfully!", {
-      position: "top-right",
-      autoClose: 2000,
-    });
+    toast.success("Profile updated successfully!", { position: "top-right", autoClose: 2000 });
   };
 
   const handleCancel = () => {
@@ -68,6 +65,28 @@ const Profile = () => {
             />
             <h2 className="text-2xl font-bold text-white mt-4">{isEditing ? tempProfile.name : profile.name}</h2>
             <p className="text-white/80">{membershipStatus}</p>
+
+            {/* Quick Navigation */}
+            <div className="mt-6 flex flex-col gap-3 w-full">
+              <button
+                onClick={() => navigate("/wishlist")}
+                className="bg-white/90 hover:bg-white text-[#F0BB78] font-medium px-4 py-2 rounded-lg shadow flex items-center gap-2 justify-center transition"
+              >
+                <FaHeart /> Wishlist
+              </button>
+              <button
+                onClick={() => navigate("/cart")}
+                className="bg-white/90 hover:bg-white text-[#F0BB78] font-medium px-4 py-2 rounded-lg shadow flex items-center gap-2 justify-center transition"
+              >
+                <FaShoppingCart /> Cart
+              </button>
+              <button
+                onClick={() => navigate("/past-orders")}
+                className="bg-white/90 hover:bg-white text-[#F0BB78] font-medium px-4 py-2 rounded-lg shadow flex items-center gap-2 justify-center transition"
+              >
+                <FaBox /> Past Orders
+              </button>
+            </div>
           </div>
 
           {/* Right Section */}

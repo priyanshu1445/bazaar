@@ -16,6 +16,7 @@ import Signup from "./pages/Signup";
 import Checkout from "./pages/Checkout";
 import PlaceOrder from "./pages/PlaceOrder";
 import TrackOrder from "./pages/TrackOrder";
+import PastOrders from "./pages/PastOrders";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/place-order" element={<PlaceOrder />} />
         <Route path="/category/:categoryId" element={<CategoryPage />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
+        <Route path="/past-orders" element={<PastOrders/>} />
       </Routes>
 
       <Foooter />
