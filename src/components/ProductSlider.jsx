@@ -104,7 +104,7 @@ const products = [
   },
 ];
 
-const ProductSlider = () => {
+const ProductSlider = ({heading}) => {
   const [wishlist, setWishlist] = useState({});
   const [quantity, setQuantity] = useState({});
   const prevRef = useRef(null);
@@ -139,7 +139,7 @@ const ProductSlider = () => {
       <ToastContainer />
 
       <h2 className="text-3xl font-bold mb-8 text-gray-800 tracking-wide">
-        🛒 Trending Products
+        🛒{heading}
       </h2>
 
       {/* Custom Navigation Buttons */}

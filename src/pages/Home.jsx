@@ -56,13 +56,13 @@ const Home = () => {
       <HeroSlider/>
 
       <CategoryGrid categories={categoriesData} />
-      <TrendingSlider/>
+      <TrendingSlider />
 
     <div>
-        <ProductSlider/>
-        <ShoppingCartLottie/>
+        <ProductSlider heading={"Trending Products"}/>
+        {/* <ShoppingCartLottie/> */}
     </div>
-      <ProductSlider/>
+      <ProductSlider heading={"Trending Snacks"}/>
       
       <ParallaxScroll/>
 

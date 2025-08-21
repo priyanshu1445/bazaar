@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import ProductSlider from "../components/ProductSlider";
+import HeroSlider from "../components/HeroSlider";
 
 const categoryData = {
   "dairy-products": {
@@ -32,13 +33,13 @@ const CategoryPage = () => {
 
   return (
     <div >
-      <div className="p-6">
-        <h1 className="text-3xl font-bold mb-2">{category.name}</h1>
-      <p className="text-gray-600 mb-6">{category.description}</p>
-      </div>
+      <HeroSlider />
+  
+  +
+  
 
   
-     <ProductSlider/>
+     <ProductSlider heading={category.name} />
     </div>
   );
 };
